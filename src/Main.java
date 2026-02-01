@@ -1,4 +1,3 @@
-import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         int highCards = 0;
@@ -10,7 +9,7 @@ public class Main {
         int fiveOAKs = 0;
         int nullCount = 0;
         StringBuilder count = new StringBuilder(); //Record the number of items found that match the chosen item (if none found, keep at 1), add this number to an empty string.
-        String[] hand = {"King", "King", "Ace", "Ace", "Ace"};
+        String[] hand = {"Jack", "King", "Ace", "Ace", "Ace"};
         for (int i = 0; i < hand.length; i++) { //Pick first element in the Array
             // If any item in the list has been counted as a match, replace as a null string.
             //Repeat steps for the other items in the list
@@ -27,8 +26,10 @@ public class Main {
                 }
             }
             count.append(matches); //mark the original card as null too
-            hand[i] = null;
-            nullCount++;
+            if (matches > 1){
+                hand[i] = null;
+                nullCount++;
+            }
         }
         if (nullCount == 2) {//If final list/array has two null items, increment number of One Pairs by 1
             onePairs++;
@@ -60,5 +61,7 @@ public class Main {
                 "Full Houses: " + fullHouses + "\n" +
                 "Four of a Kinds: " + fourOAKs + "\n" +
                 "Five of a Kinds: " + fiveOAKs);
+        System.out.println("Null Count: " + nullCount);
+        System.out.println("Count: " + count);
     }
 }
