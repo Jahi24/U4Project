@@ -6,10 +6,16 @@ public class Main {
         Poker hand4 = new Poker("King","10","Jack","Jack","10",220);
         Poker hand5 = new Poker("Queen","Queen","Queen","Jack","Ace",483);
         hand1.makeHand();
+        hand1.getHandType();
         hand2.makeHand();
+        hand2.getHandType();
         hand3.makeHand();
+        hand3.getHandType();
         hand4.makeHand();
+        hand4.getHandType();
         hand5.makeHand();
-        hand5.printInfo();
+        hand5.getHandType();
+
+        Poker.printInfo();
     }
 }
