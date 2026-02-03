@@ -6,15 +6,25 @@ public class Main {
         Poker hand4 = new Poker("King","10","Jack","Jack","10",220);
         Poker hand5 = new Poker("Queen","Queen","Queen","Jack","Ace",483);
         hand1.makeHand();
-        hand1.getHandType();
+        hand1.createRank();
         hand2.makeHand();
-        hand2.getHandType();
+        hand2.createRank();
         hand3.makeHand();
-        hand3.getHandType();
+        hand3.createRank();
         hand4.makeHand();
-        hand4.getHandType();
+        hand4.createRank();
         hand5.makeHand();
-        hand5.getHandType();
+        hand5.createRank();
+
+        int[] ranks = new int[5];
+        ranks[0] = hand1.rank;
+        ranks[1] = hand2.rank;
+        ranks[2] = hand3.rank;
+        ranks[3] = hand4.rank;
+        ranks[4] = hand5.rank;
+        for (int i = 0; i < ranks.length; i++) {
+        }
+
 
         Poker.printInfo();
     }

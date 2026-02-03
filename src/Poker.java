@@ -12,6 +12,7 @@ public class Poker {
     private String handType = "";
     private int[] numbHand = new int[5];
     private int bid;
+    public int rank = 0;
 
     public Poker(String string1, String string2, String string3, String string4, String string5, int bid){
         hand[0] = string1;
@@ -146,11 +147,40 @@ public class Poker {
     }
 
     public void createRank(){
+        if (Objects.equals(handType, "High Card")){
+            rank = 1;
+        }
+        if (Objects.equals(handType, "One Pair")){
+            rank = 2;
+        }
+        if (Objects.equals(handType, "Two Pair")){
+            rank = 3;
+        }
+        if (Objects.equals(handType, "Three of a Kind")){
+            rank = 4;
+        }
+        if (Objects.equals(handType, "Full House")){
+            rank = 5;
+        }
+        if (Objects.equals(handType, "Four of a Kind")){
+            rank = 6;
+        }
+        if (Objects.equals(handType, "Five of a Kind")){
+            rank = 7;
+        }
+        System.out.println(rank);
+    }
 
+    public void subtractRank(int sub){
+        rank -= sub;
     }
 
     public void getHandType(){
         System.out.println(handType);
+    }
+
+    public int getBidValue(){
+        return (rank * bid);
     }
 
     public static void printInfo() {
