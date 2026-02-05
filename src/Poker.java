@@ -11,7 +11,7 @@ public class Poker {
     private final String[] hand = new String[5];
     private String handType = "";
     public int[] numbHand = new int[5];
-    private final int bid;
+    private int bid = 0;
     public int rank = 0;
 
     public Poker(String string1, String string2, String string3, String string4, String string5, int bid){
