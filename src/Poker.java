@@ -10,8 +10,8 @@ public class Poker {
     private int nullCount = 0;
     private final String[] hand = new String[5];
     private String handType = "";
-    private int[] numbHand = new int[5];
-    private int bid;
+    public int[] numbHand = new int[5];
+    private final int bid;
     public int rank = 0;
 
     public Poker(String string1, String string2, String string3, String string4, String string5, int bid){
@@ -181,6 +181,12 @@ public class Poker {
         if (input.rank == rank) {
             if (handToNumber(input.getHandType()) > handToNumber(handType)) {
                 subtractRank(1);
+            } else if (handToNumber(input.getHandType()) == handToNumber(handType)){
+                for (int i = 0; i < 4; i++){
+                    if (input.numbHand[i] > numbHand[i]){
+                        subtractRank(1);
+                    }
+                }
             }
         }
     }
