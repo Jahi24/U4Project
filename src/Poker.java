@@ -171,12 +171,26 @@ public class Poker {
         System.out.println(rank);
     }
 
+    public void compareHands (Poker input){
+        if (input.rank == 7){
+            input.subtractRank(2);
+        }
+        if (input.rank == 6){
+            input.subtractRank(1);
+        }
+        if (input.rank == rank) {
+            if (handToNumber(input.getHandType()) > handToNumber(handType)) {
+                subtractRank(1);
+            }
+        }
+    }
+
     public void subtractRank(int sub){
         rank -= sub;
     }
 
-    public void getHandType(){
-        System.out.println(handType);
+    public String getHandType(){
+        return handType;
     }
 
     public int getBidValue(){

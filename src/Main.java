@@ -16,16 +16,6 @@ public class Main {
         hand5.makeHand();
         hand5.createRank();
 
-        int[] ranks = new int[5];
-        ranks[0] = hand1.rank;
-        ranks[1] = hand2.rank;
-        ranks[2] = hand3.rank;
-        ranks[3] = hand4.rank;
-        ranks[4] = hand5.rank;
-        for (int i = 0; i < ranks.length; i++) {
-        }
-
-
         Poker.printInfo();
     }
 }
