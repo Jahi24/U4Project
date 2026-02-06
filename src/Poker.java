@@ -95,21 +95,21 @@ public class Poker {
         for (int i = 0; i < hand.length; i++){ //Pick first element in the Array
             // If any item in the list has been counted as a match, replace as a null string.
             //Repeat steps for the other items in the list
-            if (hand[i] == null){
+            if (Objects.equals(hand[i], "")){
                 continue; // already removed
             }
             String current = hand[i];
             int matches = 1; // Counting the card in question
             for (int j = i + 1; j < hand.length; j++){ //Traverse the Array to see if any other element is the same
-                if (hand[j] != null && hand[j].equals(current)){
+                if (!Objects.equals(hand[j], "") && hand[j].equals(current)){
                     matches++;
-                    hand[j] = null; //mark duplicate as null
+                    hand[j] = ""; //mark duplicate as null
                     nullCount++;
                 }
             }
             count.append(matches); //mark the original card as null too
             if (matches > 1){
-                hand[i] = null;
+                hand[i] = "";
                 nullCount++;
             }
         }
