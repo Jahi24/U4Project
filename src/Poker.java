@@ -10,8 +10,8 @@ public class Poker {
     private int nullCount = 0;
     private final String[] hand = new String[5];
     private String handType = "";
-    private int[] numbHand = new int[5];
-    private int bid;
+    public int[] numbHand = new int[5];
+    private int bid = 0;
     public int rank = 0;
 
     public Poker(String string1, String string2, String string3, String string4, String string5, int bid){
@@ -92,16 +92,16 @@ public class Poker {
 
     public void makeHand() {
         StringBuilder count = new StringBuilder();//Record the number of items found that match the chosen item (if none found, keep at 1), add this number to an empty string.
-        for (int i = 0; i < hand.length; i++) { //Pick first element in the Array
+        for (int i = 0; i < hand.length; i++){ //Pick first element in the Array
             // If any item in the list has been counted as a match, replace as a null string.
             //Repeat steps for the other items in the list
-            if (hand[i] == null) {
+            if (hand[i] == null){
                 continue; // already removed
             }
             String current = hand[i];
             int matches = 1; // Counting the card in question
-            for (int j = i + 1; j < hand.length; j++) { //Traverse the Array to see if any other element is the same
-                if (hand[j] != null && hand[j].equals(current)) {
+            for (int j = i + 1; j < hand.length; j++){ //Traverse the Array to see if any other element is the same
+                if (hand[j] != null && hand[j].equals(current)){
                     matches++;
                     hand[j] = null; //mark duplicate as null
                     nullCount++;
@@ -114,39 +114,39 @@ public class Poker {
             }
         }
 
-        if (nullCount == 2) {//If final list/array has two null items, increment number of One Pairs by 1
+        if (nullCount == 2){//If final list/array has two null items, increment number of One Pairs by 1
             Poker.onePairs++;
             handType = "One Pair";
         }
-        if (nullCount == 3) {//If final list/array has three null items, increment number of 3OAKs by 1
+        if (nullCount == 3){//If final list/array has three null items, increment number of 3OAKs by 1
             Poker.threeOAKs++;
             handType = "Three of a Kind";
         }
-        if (nullCount == 0) {//If final list/array has zero null items, increment number of High Cards by 1
+        if (nullCount == 0){//If final list/array has zero null items, increment number of High Cards by 1
             Poker.highCards++;
             handType = "High Card";
         }
-        if (nullCount == 4) {//If final list/array has four null items, check if the string created in step 3 has a length of 2 or 3
-            if (count.length() == 2) { //if the length is 2, increment 4OAKs by 1
+        if (nullCount == 4){//If final list/array has four null items, check if the string created in step 3 has a length of 2 or 3
+            if (count.length() == 2){ //if the length is 2, increment 4OAKs by 1
                 Poker.fourOAKs++;
                 handType = "Four of a Kind";
-            } else if (count.length() == 3) {//is the length is 3, increment Two Pairs by 1
+            } else if (count.length() == 3){//is the length is 3, increment Two Pairs by 1
                 Poker.twoPairs++;
                 handType = "Two Pair";
             }
         }
-        if (nullCount == 5) {//If final list/array has five null items, check is the string created in step 3 has a length of 1 or 2             if (count.length() == 1) { //if the length is 1, increment 5OAKs by 1
-            if (count.length() == 1) {
+        if (nullCount == 5){//If final list/array has five null items, check is the string created in step 3 has a length of 1 or 2             if (count.length() == 1) { //if the length is 1, increment 5OAKs by 1
+            if (count.length() == 1){
                 Poker.fiveOAKs++;
                 handType = "Five of a Kind";
-            } else if (count.length() == 2) { //if the length is 2, increment Full Houses by 1
+            } else if (count.length() == 2){ //if the length is 2, increment Full Houses by 1
                 Poker.fullHouses++;
                 handType = "Full House";
             }
         }
     }
 
-    public void createRank(){
+    public void createRank() {
         if (Objects.equals(handType, "High Card")){
             rank = 1;
         }
@@ -171,17 +171,31 @@ public class Poker {
         System.out.println(rank);
     }
 
-    public void compareHands (Poker input){
+    public void compareHands (Poker input) {
         if (input.rank == 7){
             input.subtractRank(2);
         }
         if (input.rank == 6){
             input.subtractRank(1);
         }
-        if (input.rank == rank) {
-            if (handToNumber(input.getHandType()) > handToNumber(handType)) {
+        if (input.rank == rank){
+            if (handToNumber(input.getHandType()) > handToNumber(handType)){
                 subtractRank(1);
+            } else if (handToNumber(input.getHandType()) == handToNumber(handType)){
+                for (int i = 0; i < 4; i++){
+                    if (input.numbHand[i] > numbHand[i]){
+                        subtractRank(1);
+                        if (rank == 0){
+                            subtractRank(-1);
+                            input.subtractRank(-1);
+                        }
+                        break;
+                    }
+                }
             }
+        }
+        if (input.rank == 0){
+            input.subtractRank(-1);
         }
     }
 
@@ -189,11 +203,11 @@ public class Poker {
         rank -= sub;
     }
 
-    public String getHandType(){
+    public String getHandType() {
         return handType;
     }
 
-    public int getBidValue(){
+    public int getBidValue() {
         return (rank * bid);
     }
 
