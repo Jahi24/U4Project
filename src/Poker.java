@@ -221,4 +221,14 @@ public class Poker {
                 "One Pairs: " + onePairs + "\n" +
                 "High Cards: " + highCards + "\n");
     }
+
+    public static void resetInfo() {
+        highCards = 0;
+        onePairs = 0;
+        twoPairs = 0;
+        threeOAKs = 0;
+        fullHouses = 0;
+        fourOAKs = 0;
+        fiveOAKs = 0;
+    }
 }
