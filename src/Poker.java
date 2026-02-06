@@ -90,7 +90,7 @@ public class Poker {
         return 7;
     }
 
-    public void makeHand() {
+    public void registerHand() {
         StringBuilder count = new StringBuilder();//Record the number of items found that match the chosen item (if none found, keep at 1), add this number to an empty string.
         for (int i = 0; i < hand.length; i++){ //Pick first element in the Array
             // If any item in the list has been counted as a match, replace as a null string.

@@ -32,7 +32,7 @@ public class Main {
             String str4 = cards[3];
             String str5 = cards[4];
             allHands[i] = new Poker(str1, str2, str3, str4, str5, bid);
-            allHands[i].makeHand();
+            allHands[i].registerHand();
         }
         Poker.printInfo();
     }
