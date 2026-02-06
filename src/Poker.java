@@ -213,7 +213,7 @@ public class Poker {
 
     public static void printInfo() {
         System.out.println(
-                "Five of a Kinds: " + fiveOAKs+
+                "Five of a Kinds: " + fiveOAKs + "\n" +
                 "Four of a Kinds: " + fourOAKs + "\n" +
                 "Full Houses: " + fullHouses + "\n" +
                 "Three of a Kinds: " + threeOAKs + "\n" +
