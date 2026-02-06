@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         StringBuilder fileData = new StringBuilder();
         try {
-            File f = new File("src/data");
+            File f = new File("src/data1");
             Scanner s = new Scanner(f);
 
             while (s.hasNextLine()) {

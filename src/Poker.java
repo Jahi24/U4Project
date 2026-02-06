@@ -212,12 +212,13 @@ public class Poker {
     }
 
     public static void printInfo() {
-        System.out.println("High Cards: " + highCards + "\n" +
-                "One Pairs: " + onePairs + "\n" +
-                "Two Pairs: " + twoPairs + "\n" +
-                "Three of a Kinds: " + threeOAKs + "\n" +
-                "Full Houses: " + fullHouses + "\n" +
+        System.out.println(
+                "Five of a Kinds: " + fiveOAKs+
                 "Four of a Kinds: " + fourOAKs + "\n" +
-                "Five of a Kinds: " + fiveOAKs);
+                "Full Houses: " + fullHouses + "\n" +
+                "Three of a Kinds: " + threeOAKs + "\n" +
+                "Two Pairs: " + twoPairs + "\n" +
+                "One Pairs: " + onePairs + "\n" +
+                "High Cards: " + highCards + "\n");
     }
 }
