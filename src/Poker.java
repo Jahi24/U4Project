@@ -11,7 +11,7 @@ public class Poker {
     private final String[] hand = new String[5];
     private String handType = "";
     public int[] numbHand = new int[5];
-    private int bid = 0;
+    private final int bid;
     public int rank = 0;
 
     public Poker(String string1, String string2, String string3, String string4, String string5, int bid){
@@ -168,7 +168,7 @@ public class Poker {
         if (Objects.equals(handType, "Five of a Kind")){
             rank = 7;
         }
-        System.out.println(rank);
+        System.out.print(rank + " ");
     }
 
     public void compareHands (Poker input) {
@@ -207,6 +207,10 @@ public class Poker {
         return handType;
     }
 
+    public void printRank(){
+        System.out.print(rank + " ");
+    }
+
     public int getBidValue() {
         return (rank * bid);
     }
@@ -219,7 +223,7 @@ public class Poker {
                 "Three of a Kinds: " + threeOAKs + "\n" +
                 "Two Pairs: " + twoPairs + "\n" +
                 "One Pairs: " + onePairs + "\n" +
-                "High Cards: " + highCards + "\n");
+                "High Cards: " + highCards);
     }
 
     public static void resetInfo() {

@@ -45,6 +45,7 @@ public class Main {
         }
 
         while (part2){
+            int totalBidValue = 0;
             StringBuilder fileData = new StringBuilder();
             try {
                 File f = new File("src/data2");
@@ -76,11 +77,27 @@ public class Main {
                 allHands[i].registerHand();
                 allHands[i].createRank();
             }
+            for (Poker allHand : allHands) {
+                for (Poker hand : allHands) {
+                    allHand.compareHands(hand);
+                }
+            }
+            System.out.println();
+            for (Poker hand: allHands){
+                hand.printRank();
+                totalBidValue += hand.getBidValue();
+            }
+            System.out.println();
             Poker.printInfo();
+            System.out.println("Total Bid Value: " + totalBidValue);
             part2 = false;
             Poker.resetInfo();
             part3 = true;
         }
 
+        while (part3){
+            System.out.println("***Part 3***");
+            part3 = false;
+        }
     }
 }
