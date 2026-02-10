@@ -172,30 +172,37 @@ public class Poker {
     }
 
     public void compareHands (Poker input) {
-        if (input.rank == 7){
-            input.subtractRank(2);
-        }
-        if (input.rank == 6){
-            input.subtractRank(1);
-        }
-        if (input.rank == rank){
-            if (handToNumber(input.getHandType()) > handToNumber(handType)){
+        if (handToNumber(input.getHandType()) > handToNumber(handType)){
                 subtractRank(1);
-            } else if (handToNumber(input.getHandType()) == handToNumber(handType)){
-                for (int i = 0; i < 4; i++){
-                    if (input.numbHand[i] > numbHand[i]){
-                        subtractRank(1);
-                        if (rank == 0){
-                            subtractRank(-1);
-                            input.subtractRank(-1);
-                        }
-                        break;
+        } else if (handToNumber(handType) > handToNumber(input.getHandType())){
+                input.subtractRank(1);
+        }
+        if (handToNumber(input.getHandType()) == handToNumber(handType)){
+            for (int i = 0; i < 4; i++){
+                if (input.numbHand[i] > numbHand[i]){
+                    subtractRank(1);
+                    if (rank == 0){
+                        subtractRank(-1);
+                        input.subtractRank(-1);
                     }
+                    if (input.rank == 0) {
+                        input.subtractRank(-1);
+                        subtractRank(-1);
+                    }
+                    break;
+                } else if (numbHand[i] > input.numbHand[i]){
+                    input.subtractRank(1);
+                    if (rank == 0){
+                        subtractRank(-1);
+                        input.subtractRank(-1);
+                    }
+                    if (input.rank == 0) {
+                        input.subtractRank(-1);
+                        subtractRank(-1);
+                    }
+                    break;
                 }
             }
-        }
-        if (input.rank == 0){
-            input.subtractRank(-1);
         }
     }
 

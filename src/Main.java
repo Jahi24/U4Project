@@ -78,6 +78,7 @@ public class Main {
                 allHands[i].createRank();
             }
             for (Poker allHand : allHands) {
+                allHand.rank = numberOfLines;
                 for (Poker hand : allHands) {
                     allHand.compareHands(hand);
                 }
